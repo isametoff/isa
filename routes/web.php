@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\Main\AdminController;
- /*
+use App\Http\Controllers\Admin\Category\CategoryController;
+
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -15,13 +17,18 @@ use App\Http\Controllers\Admin\Main\AdminController;
 |
 */
 
-Route::name('main.')->group(function() {
+Route::name('main.')->group(function () {
     Route::get('/', IndexController::class);
 });
 
-Route::prefix('admin')->group(function (){
-    Route::name('main')->group(function() {
+Route::prefix('admin')->group(function () {
+    Route::name('main')->group(function () {
         Route::get('/', AdminController::class);
+    });
+    Route::name('category')->group(function () {
+        Route::prefix('categories')->group(function () {
+            Route::get('/', CategoryController::class);
+        });
     });
 });
 

@@ -8,7 +8,7 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
-        href="{{ asset('') }}https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
@@ -28,7 +28,8 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
+                width="60">
         </div>
 
         <!-- Navbar -->
@@ -75,7 +76,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
+                                <img src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="User Avatar"
                                     class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -93,7 +94,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
+                                <img src="{{ asset('dist/img/user8-128x128.jpg') }}" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -170,17 +171,7 @@
             </ul>
         </nav>
         <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            </a>
-
-            <!-- Sidebar -->
-
-            <!-- /.sidebar -->
-        </aside>
-
+        @include('admin.includes.sidebar')
         @yield('content')
 
         <footer class="main-footer">
@@ -199,15 +190,15 @@
     </div>
     <!-- ./wrapper -->
 
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <script src="plugins/moment/moment.min.js"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <script src="dist/js/adminlte.js"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 </body>
 
 </html>
