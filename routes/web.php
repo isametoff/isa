@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Category\StoreController;
 use App\Http\Controllers\Admin\Category\ShowController;
 use App\Http\Controllers\Admin\Category\EditController;
 use App\Http\Controllers\Admin\Category\UpdateController;
+use App\Http\Controllers\Admin\Category\DeleteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,7 @@ Route::name('admin.')->group(function () {
                 Route::get('/{category}', ShowController::class)->name('show');
                 Route::get('/{category}/edit', EditController::class)->name('edit');
                 Route::patch('/{category}', UpdateController::class)->name('update');
+                Route::patch('/{category}', DeleteController::class)->name('delete');
             });
         });
     });

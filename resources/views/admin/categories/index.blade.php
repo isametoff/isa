@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-3">
                     <div class="card">
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Название</th>
-                                        <th class="colspan-2">Действия</th>
+                                        <th class="colspan-3" class="text-center">Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,7 +50,6 @@
                                                     class="text-danger"><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
