@@ -9,7 +9,10 @@ use App\Http\Controllers\Admin\Category\CreateController;
 use App\Http\Controllers\Admin\Category\StoreController;
 use App\Http\Controllers\Admin\Category\ShowController;
 use App\Http\Controllers\Admin\Category\EditController;
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\Category\UpdateController;
+=======
+>>>>>>> e017bfcd52420a4b7e22469f68f3fa05aa3d3c09
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +40,10 @@ Route::name('admin.')->group(function () {
                 Route::post('/store', StoreController::class)->name('store');
                 Route::get('/{category}', ShowController::class)->name('show');
                 Route::get('/{category}/edit', EditController::class)->name('edit');
+<<<<<<< HEAD
                 Route::patch('/{category}', UpdateController::class)->name('update');
+=======
+>>>>>>> e017bfcd52420a4b7e22469f68f3fa05aa3d3c09
             });
         });
     });

@@ -24,12 +24,20 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-lg-3 col-12">
+<<<<<<< HEAD
                         <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="form-group col-12">
                                 <input type="text" class="form-control" name="title" placeholder="Название категории"
                                     value="{{ $category->title }}">
+=======
+                        {{-- <form action="{{ route('admin.category.store') }}" method="POST"> --}}
+                            <form action="#" method="POST">
+                            @csrf
+                            <div class="form-group col-12">
+                                <input type="text" class="form-control" name="title" placeholder="Название категории" value="{{ ($category->title) }}">
+>>>>>>> e017bfcd52420a4b7e22469f68f3fa05aa3d3c09
                                 @error('title')
                                     <div class="text-danger">Это поле необходимо заполнить</div>
                                 @enderror
