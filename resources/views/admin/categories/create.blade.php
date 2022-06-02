@@ -24,12 +24,16 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-lg-3 col-12">
-                        <form action="#">
+                        <form action="{{ route('admin.category.store') }}" method="POST">
+                            @csrf
                             <div class="form-group col-12">
-                                <input type="text" class="form-control" placeholder="Название категории">
+                                <input type="text" class="form-control" name="title" placeholder="Название категории">
+                                @error('title')
+                                    <div class="text-danger">Это поле необходимо заполнить</div>
+                                @enderror
                             </div>
                             <div class="col-12">
-                                <input type="submit" class="btn btn-primary " value="Добавить">
+                                <input type="submit" class="btn btn-primary" value="Добавить">
                             </div>
                         </form>
                     </div>

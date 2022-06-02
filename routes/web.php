@@ -6,6 +6,7 @@ use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\Main\AdminController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\CreateController;
+use App\Http\Controllers\Admin\Category\StoreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,7 @@ Route::name('admin.')->group(function () {
             Route::prefix('categories')->group(function () {
                 Route::get('/', CategoryController::class)->name('index');
                 Route::get('/create', CreateController::class)->name('create');
+                Route::post('/store', StoreController::class)->name('store');
             });
         });
     });
