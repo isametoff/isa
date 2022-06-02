@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-6">
                     <div class="card">
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
@@ -46,6 +46,8 @@
                                                         class="far fa-eye"></i></a></td>
                                             <td><a href="{{ route('admin.category.edit', $category->id) }}"
                                                     class="text-success"><i class="fas fa-pen"></i></a></td>
+                                            <td><a href="{{ route('admin.category.edit', $category->id) }}"
+                                                    class="text-danger"><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                     @endforeach
 
