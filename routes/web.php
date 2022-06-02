@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\Main\AdminController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\CreateController;
 use App\Http\Controllers\Admin\Category\StoreController;
 use App\Http\Controllers\Admin\Category\ShowController;
+use App\Http\Controllers\Admin\Category\EditController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +35,7 @@ Route::name('admin.')->group(function () {
                 Route::get('/create', CreateController::class)->name('create');
                 Route::post('/store', StoreController::class)->name('store');
                 Route::get('/{category}', ShowController::class)->name('show');
+                Route::get('/{category}/edit', EditController::class)->name('edit');
             });
         });
     });
