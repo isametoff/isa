@@ -39,7 +39,7 @@ Route::name('admin.')->group(function () {
                 Route::get('/{category}', ShowController::class)->name('show');
                 Route::get('/{category}/edit', EditController::class)->name('edit');
                 Route::patch('/{category}', UpdateController::class)->name('update');
-                Route::patch('/{category}', DeleteController::class)->name('delete');
+                Route::delete('/{category}', DeleteController::class)->name('delete');
             });
         });
     });
