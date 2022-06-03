@@ -32,7 +32,7 @@ Route::name('admin.')->group(function () {
             Route::get('/', AdminController::class);
         });
         Route::name('category.')->group(function () {
-            Route::prefix('categories')->group(function () {
+            Route::prefix('category')->group(function () {
                 Route::get('/', CategoryController::class)->name('index');
                 Route::get('/create', CreateController::class)->name('create');
                 Route::post('/store', StoreController::class)->name('store');
@@ -40,6 +40,17 @@ Route::name('admin.')->group(function () {
                 Route::get('/{category}/edit', EditController::class)->name('edit');
                 Route::patch('/{category}', UpdateController::class)->name('update');
                 Route::delete('/{category}', DeleteController::class)->name('delete');
+            });
+        });
+        Route::name('tag.')->group(function () {
+            Route::prefix('tag')->group(function () {
+                Route::get('/', App\Http\Controllers\Admin\Tag\TagController::class)->name('index');
+                Route::get('/create', App\Http\Controllers\Admin\Tag\CreateController::class)->name('create');
+                Route::post('/store', App\Http\Controllers\Admin\Tag\StoreController::class)->name('store');
+                Route::get('/{tag}', App\Http\Controllers\Admin\Tag\ShowController::class)->name('show');
+                Route::get('/{tag}/edit', App\Http\Controllers\Admin\Tag\EditController::class)->name('edit');
+                Route::patch('/{tag}', App\Http\Controllers\Admin\Tag\UpdateController::class)->name('update');
+                Route::delete('/{tag}', App\Http\Controllers\Admin\Tag\DeleteController::class)->name('delete');
             });
         });
     });
