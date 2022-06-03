@@ -31,6 +31,17 @@ Route::name('admin.')->group(function () {
         Route::name('main')->group(function () {
             Route::get('/', AdminController::class);
         });
+        Route::name('post.')->group(function () {
+            Route::prefix('post')->group(function () {
+                Route::get('/', App\Http\Controllers\Admin\Post\PostController::class)->name('index');
+                Route::get('/create', App\Http\Controllers\Admin\Post\CreateController::class)->name('create');
+                Route::post('/store', App\Http\Controllers\Admin\Post\StoreController::class)->name('store');
+                Route::get('/{post}', App\Http\Controllers\Admin\Post\ShowController::class)->name('show');
+                Route::get('/{post}/edit', App\Http\Controllers\Admin\Post\EditController::class)->name('edit');
+                Route::patch('/{post}', App\Http\Controllers\Admin\Post\UpdateController::class)->name('update');
+                Route::delete('/{post}', App\Http\Controllers\Admin\Post\DeleteController::class)->name('delete');
+            });
+        });
         Route::name('category.')->group(function () {
             Route::prefix('category')->group(function () {
                 Route::get('/', CategoryController::class)->name('index');
