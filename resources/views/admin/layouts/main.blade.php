@@ -199,14 +199,13 @@
     </script>
     <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
-                toolbar:
-                [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                toolbar: [
                     ['font', ['strikethrough', 'superscript', 'subscript']],
                     ['fontsize', ['fontsize']],
                     ['color', ['color']],
@@ -214,6 +213,9 @@
                     ['height', ['height']]
                 ]
             });
+        });
+        $(function() {
+            bsCustomFileInput.init();
         });
     </script>
 </body>
