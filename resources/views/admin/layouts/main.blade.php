@@ -22,6 +22,11 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
+    <style>
+        .custom-file-label::after{
+            content: "...";
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -217,6 +222,9 @@
         $(function() {
             bsCustomFileInput.init();
         });
+    </script>
+    <script>
+
     </script>
 </body>
 
