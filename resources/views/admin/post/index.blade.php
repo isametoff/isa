@@ -26,47 +26,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="card">
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
-                                <thead>
+                <div class="card w-50">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th class="text-center colspan-3 ">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($posts as $post)
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Название</th>
-                                        <th class="text-center colspan-3 ">Действия</th>
+                                        <td>{{ $post->id }}</td>
+                                        <td>{{ $post->title }}</td>
+                                        <td class="text-center"><a href="{{ route('admin.post.show', $post->id) }}">
+                                                <i class="far fa-eye"></i></a></td>
+                                        <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"><i
+                                                    class="fas fa-pen"></i></a></td>
+                                        <td class="text-center">
+                                            <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="border-0">
+                                                    <i class="fas fa-trash text-danger" role="button"></i>
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($posts as $post)
-                                        <tr>
-                                            <td>{{ $post->id }}</td>
-                                            <td>{{ $post->title }}</td>
-                                            <td class="text-center"><a
-                                                    href="{{ route('admin.post.show', $post->id) }}">
-                                                    <i class="far fa-eye"></i></a></td>
-                                            <td class="text-center"><a
-                                                    href="{{ route('admin.post.edit', $post->id) }}"
-                                                    ><i class="fas fa-pen"></i></a></td>
-                                            <td class="text-center">
-                                                <form action="{{ route('admin.post.delete', $post->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="border-0">
-                                                        <i class="fas fa-trash text-danger" role="button"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
 @endsection

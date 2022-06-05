@@ -10,6 +10,13 @@ class Post extends Model
     use HasFactory;
 
     protected $table = 'posts';
-    protected $fillable = ['title', 'content', 'preview_image','main_image'];
+    protected $fillable = [
+        'title',
+         'content',
+         'category_id',
+         'main_image',
+         'preview_image',
+
+    ];
     protected $quardet = false;
 }
