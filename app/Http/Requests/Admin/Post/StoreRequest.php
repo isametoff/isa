@@ -25,11 +25,41 @@ class StoreRequest extends FormRequest
     {
         return
             [
-                'title' => 'required|string|unique:posts,title',
-                'content' => 'required|string',
-                'preview_image' => 'required|file ',
-                'main_image' => 'required|file',
-                'category_id' => 'required|numeric',
+                'title' => [
+                    'required','string','unique:posts,title'
+                ],
+                'content' => [
+                    'required','string'
+                ],
+                'preview_image' => [
+                    'required','file '
+                ],
+                'main_image' => [
+                    'required','file'
+                ],
+                'category_id' => [
+                    'required',
+                    'numeric',
+                    'min:1',
+                    'exists:categories, id'
+                ],
             ];
+    }
+    public function messages() {
+        return [
+            'required' => 'Это поле необходимо для заполнения',
+            'category_id.exists' => 'Не надо так делать, дядя',
+            // 'unique' => 'Такое значение поля «:attribute» уже используется',
+            // 'min' => [
+            //     'string' => 'Поле «:attribute» должно быть не меньше :min символов',
+            //     'numeric' => 'Нужно выбрать категорию нового поста блога',
+            //     'file' => 'Файл «:attribute» должен быть не меньше :min Кбайт'
+            // ],
+            // 'max' => [
+            //     'string' => 'Поле «:attribute» должно быть не больше :max символов',
+            //     'file' => 'Файл «:attribute» должен быть не больше :max Кбайт'
+            // ],
+            // 'mimes' => 'Файл «:attribute» должен иметь формат :values',
+        ];
     }
 }
