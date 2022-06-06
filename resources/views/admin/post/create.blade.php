@@ -27,13 +27,13 @@
                                 <input type="text" class="form-control" name="title" placeholder="Название поста"
                                     value="{{ old('title') }}">
                                 @error('title')
-                                    <div class="text-danger">{{$message}}</div>
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
                                 <textarea id="summernote" name="content">{{ old('content') }}</textarea>
                                 @error('content')
-                                    <div class="text-danger">{{$message}}</div>
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-25">
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 @error('preview_image')
-                                    <div class="text-danger">{{$message}}</div>
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-25">
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 @error('main_image')
-                                    <div class="text-danger">{{$message}}</div>
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-25">
@@ -71,12 +71,31 @@
                                 <select name="category_id" class="form-control">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
-                                        {{ $category->id == old('category_id') ? 'selected' : '' }}
-                                        >{{ $category->title }}</option>
+                                            {{ $category->id == old('category_id') ? 'selected' : '' }}>
+                                            {{ $category->title }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
-                                    <div class="text-danger">{{$message}}</div>
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group w-25">
+                                <label>Тэги</label>
+                                <div class="select2-purple">
+                                    <select name="tags_ids[]" class="select2 select2-hidden-accessible" multiple=""
+                                        data-placeholder="Выберете тэги" data-dropdown-css-class="select2-purple"
+                                        style="width: 100%;" data-select2-id="15" tabindex="-1" aria-hidden="true">
+                                        @foreach ($tags as $tag)
+                                            <option
+                                                {{ is_array(old('tags_ids')) && in_array($tag->id, old('tags_ids')) ? 'selected' : '' }}
+                                                value="{{ $tag->id }}">
+                                                {{ $tag->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('tags_ids')
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-25">
