@@ -25,32 +25,6 @@ class StoreRequest extends FormRequest
     {
         return
             [
-                // 'title' => [
-                //     'required', 'string', 'unique:posts,title'
-                // ],
-                // 'content' => [
-                //     'required', 'string'
-                // ],
-                // 'preview_image' => [
-                //     'required', 'file '
-                // ],
-                // 'main_image' => [
-                //     'required', 'file'
-                // ],
-                // 'category_id' => [
-                //     'required',
-                //     'integer',
-                //     'min:1',
-                //     'exists:categories',
-                // ],
-                // 'tags_ids' => [
-                //     'nullable',
-                //     'array',
-                // ],
-                // 'tags_ids.*' => [
-                //     'nullable', 'exists:tags, id', 'integer',
-                // ],
-
                 'title' => 'required|string',
                 'content' => 'required|string',
                 'preview_image' => 'required|file',
@@ -58,7 +32,6 @@ class StoreRequest extends FormRequest
                 'category_id' => 'required|integer|exists:categories,id',
                 'tags_ids' => 'nullable|array',
                 'tags_ids.*' => 'nullable|integer|exists:tags,id',
-
             ];
     }
     public function messages()
