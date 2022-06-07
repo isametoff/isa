@@ -25,7 +25,13 @@ class UpdateRequest extends FormRequest
     {
         return
         [
-            'title' => 'required|string|unique:posts,title'
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'preview_image' => 'nullable|file',
+            'main_image' => 'nullable|file',
+            'category_id' => 'required|integer|exists:categories,id',
+            'tags_ids' => 'nullable|array',
+            'tags_ids.*' => 'nullable|integer|exists:tags,id',
         ];
     }
 }
