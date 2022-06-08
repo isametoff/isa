@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Service;
 
 use App\Models\Post;
@@ -11,9 +12,10 @@ class PostService
     public function store($data)
     {
         try {
-            DB::beginTransaction();
-            $tagIds = $data['tags_ids'];
-            unset($data['tags_ids']);
+            if (isset($data['tags_ids'])) {
+                $tagIds = $data['tags_ids'];
+                unset($data['tags_ids']);
+            }
             if (isset($data['preview_image'])) {
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             }
@@ -21,9 +23,11 @@ class PostService
                 $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
             }
             $post = Post::firstOrCreate($data);
-            $post->tags()->attach($tagIds);
+            if (isset($tagIds)) {
+                $post->tags()->attach($tagIds);
+            }
             DB::commit();
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             Db::rollBack();
             abort(500);
         }
@@ -32,9 +36,10 @@ class PostService
     public function update($data, $post)
     {
         try {
-            DB::beginTransaction();
-            $tagIds = $data['tags_ids'];
-            unset($data['tags_ids']);
+            if (isset($data['tags_ids'])) {
+                $tagIds = $data['tags_ids'];
+                unset($data['tags_ids']);
+            }
             if (isset($data['preview_image'])) {
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             }
@@ -42,12 +47,14 @@ class PostService
                 $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
             }
             $post->update($data);
-            $post->tags()->sync($tagIds);
+            if (isset($tagIds)) {
+                $post->tags()->attach($tagIds);
+            }
             DB::commit();
         } catch (\Exception $exception) {
             Db::rollBack();
             abort(500);
         }
-            return $post;
+        return $post;
     }
 }
