@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\Main\AdminController;
@@ -11,6 +10,8 @@ use App\Http\Controllers\Admin\Category\ShowController;
 use App\Http\Controllers\Admin\Category\EditController;
 use App\Http\Controllers\Admin\Category\UpdateController;
 use App\Http\Controllers\Admin\Category\DeleteController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,8 +29,11 @@ Route::name('main.')->group(function () {
 
 Route::name('admin.')->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::name('main')->group(function () {
-            Route::get('/', AdminController::class);
+        Route::get('/', AdminController::class)->name('index');
+        Route::name('main.')->group(function () {
+            Route::prefix('main')->group(function () {
+                Route::get('/', AdminController::class)->name('index');
+            });
         });
         Route::name('post.')->group(function () {
             Route::prefix('post')->group(function () {
@@ -62,6 +66,17 @@ Route::name('admin.')->group(function () {
                 Route::get('/{tag}/edit', App\Http\Controllers\Admin\Tag\EditController::class)->name('edit');
                 Route::patch('/{tag}', App\Http\Controllers\Admin\Tag\UpdateController::class)->name('update');
                 Route::delete('/{tag}', App\Http\Controllers\Admin\Tag\DeleteController::class)->name('delete');
+            });
+        });
+        Route::name('user.')->group(function () {
+            Route::prefix('user')->group(function () {
+                Route::get('/', App\Http\Controllers\Admin\User\UserController::class)->name('index');
+                Route::get('/create', App\Http\Controllers\Admin\User\CreateController::class)->name('create');
+                Route::post('/store', App\Http\Controllers\Admin\User\StoreController::class)->name('store');
+                Route::get('/{user}', App\Http\Controllers\Admin\User\ShowController::class)->name('show');
+                Route::get('/{user}/edit', App\Http\Controllers\Admin\User\EditController::class)->name('edit');
+                Route::patch('/{user}', App\Http\Controllers\Admin\User\UpdateController::class)->name('update');
+                Route::delete('/{user}', App\Http\Controllers\Admin\User\DeleteController::class)->name('delete');
             });
         });
     });

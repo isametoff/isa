@@ -47,8 +47,13 @@ class PostService
                 $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
             }
             $post->update($data);
-            if (isset($tagIds)) {
-                $post->tags()->attach($tagIds);
+            // if (isset($tagIds)) {
+            //     $post->tags()->attach($tagIds);
+            // }
+            if (!empty($tagIds)) {
+                $post->tags()->sync($tagIds);
+            } else {
+                $post->tags()->detach();
             }
             DB::commit();
         } catch (\Exception $exception) {

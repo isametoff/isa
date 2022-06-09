@@ -15,7 +15,7 @@ class UpdateController extends Controller
     {
     	$data = $request->validated();
     	// dd($data);
-    	$data['password'] = Hash::make($data['password']);
+    	//$data['password'] = Hash::make($data['password']);
         $user->update($data);
         return view('admin.user.show', compact('user'));
     }

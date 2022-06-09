@@ -24,10 +24,10 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string',
-            'email'=>'required|string|email|unique:users',
-            // 'password'=>'required|string',
-            'role'=>'required|integer',
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string',
+            //     'role'=>'required|integer',
         ];
     }
 }

@@ -39,6 +39,12 @@ class StoreRequest extends FormRequest
         return [
             'required' => 'Это поле необходимо для заполнения',
             'category_id.exists' => 'Не надо так делать, дядя',
+            'title.required' => 'Это поле необходимо для заполнение',
+            'title.string' => 'Данные должны соответствовать к строчному типу',
+            'content.required' => 'Это поле необходимо для заполнение',
+            'content.string' => 'Данные должны соответствовать к строчному типу',
+            'preview_image.required' => 'Это поле необходимо для заполнение',
+            'preview_image.file' => 'Вы должны выбрать файл',
             // 'unique' => 'Такое значение поля «:attribute» уже используется',
             // 'min' => [
             //     'string' => 'Поле «:attribute» должно быть не меньше :min символов',

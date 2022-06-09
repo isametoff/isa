@@ -20,7 +20,6 @@ class Post extends Model
         'tags_ids',
         'main_image',
         'preview_image',
-
     ];
 
     public function tags()

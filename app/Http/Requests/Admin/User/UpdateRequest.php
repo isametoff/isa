@@ -25,10 +25,10 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'email'=>'required|string|email|unique:users,email,'.$this->user_id,
-            'password'=>'required|string',
-            'user_id'=>'required|integer|exists:users,id',
-            'role'=>'required|integer',
+            'email'=>'required|string|email|unique:users',
+            // 'password'=>'required|string',
+            // 'user_id'=>'required|integer|exists:users,id',
+            // 'role'=>'required|integer',
         ];
     }
 }
