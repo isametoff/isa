@@ -45,17 +45,6 @@ class StoreRequest extends FormRequest
             'content.string' => 'Данные должны соответствовать к строчному типу',
             'preview_image.required' => 'Это поле необходимо для заполнение',
             'preview_image.file' => 'Вы должны выбрать файл',
-            // 'unique' => 'Такое значение поля «:attribute» уже используется',
-            // 'min' => [
-            //     'string' => 'Поле «:attribute» должно быть не меньше :min символов',
-            //     'numeric' => 'Нужно выбрать категорию нового поста блога',
-            //     'file' => 'Файл «:attribute» должен быть не меньше :min Кбайт'
-            // ],
-            // 'max' => [
-            //     'string' => 'Поле «:attribute» должно быть не больше :max символов',
-            //     'file' => 'Файл «:attribute» должен быть не больше :max Кбайт'
-            // ],
-            // 'mimes' => 'Файл «:attribute» должен иметь формат :values',
         ];
     }
 }

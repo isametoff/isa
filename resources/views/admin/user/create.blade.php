@@ -20,7 +20,6 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="col-12">
-
                     <form action="{{ route('admin.user.store') }}" method="post" class="w-25">
                         @csrf
                         <div class="form-group">
@@ -47,7 +46,7 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        {{-- <div class="form-group w-50">
+                        <div class="form-group w-50">
                             <label>Choose Role</label>
                             <select class="form-control" name="role">
                                 @foreach ($roles as $id => $role)
@@ -58,7 +57,7 @@
                             @error('role')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Add">
                         </div>

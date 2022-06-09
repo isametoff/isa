@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Models\User;
 
 class CreateController extends Controller
 {
-    public function __invoke()
+    public function __invoke(User $user)
     {
-    	$users = User::all();
-    	return view('admin.user.create', compact('users'));
+    	$roles = User::getRoles();
+    	return view('admin.user.create', compact('roles', 'user'));
     }
 }
