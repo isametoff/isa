@@ -21,27 +21,42 @@
             <div class="container-fluid">
                 <div class="col-12">
 
-                    <form action="{{ route('admin.user.update',  $user->id) }}" method="POST" class="w-25">
+                    <form action="{{ route('admin.user.update', $user->id) }}" method="POST" class="w-25">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="name" value="{{ old('name', $user->name) }}" class="form-control"
-                                >
+                            <input type="text" name="name" value="{{ old('name', $user->name) }}" class="form-control">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" name="email" value="{{ old('email', $user->email) }}" class="form-control"
-                                >
+                            <input type="text" name="email" value="{{ old('email', $user->email) }}"
+                                class="form-control">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group w-50">
+                            <label>Choose Role</label>
+                            <select class="form-control" name="role">
+                                @foreach ($roles as $id => $role)
+                                    <option value="{{ $id }}" {{ $id == old('role_id') ? 'selected' : '' }}>
+                                        {{ $role }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('role')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Add">
+                            {{-- <div class="form-group w-50">
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            </div> --}}
+                            <input type="submit" class="btn btn-primary" value="Обновить">
                         </div>
                     </form>
                 </div>
