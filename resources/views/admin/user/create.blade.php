@@ -38,14 +38,14 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>Password</label>
                             <input type="text" name="password" value="{{ old('password') }}" class="form-control"
                                 placeholder="Create Password">
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="form-group w-50">
                             <label>Choose Role</label>
                             <select class="form-control" name="role">
