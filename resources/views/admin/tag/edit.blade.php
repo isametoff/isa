@@ -29,7 +29,7 @@
                             @method('PATCH')
                             <div class="form-group col-12">
                                 <input type="text" class="form-control" name="title" placeholder="Название тега"
-                                    value="{{ $tag->title }}">
+                                    value="{{'title', $tag->title }}">
                                 @error('title')
                                     <div class="text-danger">Это поле необходимо заполнить</div>
                                 @enderror
