@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\SendVerifyWithQueueNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -35,4 +36,8 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
     protected $quardet = false;
 
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new SendVerifyWithQueueNotification());
+    }
 }
