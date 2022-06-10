@@ -33,6 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'role',
+        'email_verified_at',
     ];
     protected $quardet = false;
 
