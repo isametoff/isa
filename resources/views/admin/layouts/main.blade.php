@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title> @yield('title') </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -30,7 +30,7 @@
     </style>
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed ">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -53,7 +53,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         @method('POST')
-                        <input class="btn btn-outline-primary" type="submit" value="Logout">
+                        <input class="btn btn-outline-primary" type="submit" value="Выход">
                     </form>
                 </li>
             </ul>

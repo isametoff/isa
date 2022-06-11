@@ -10,7 +10,11 @@ class DeleteController extends Controller
 {
     public function __invoke(Category $category)
     {
-        $category->delete();
+        if (auth()->user()->role == 0) {
+            $category->delete();
+        } else {
+            abort(504);
+        }
         return redirect()->route('admin.category.index');
     }
 }

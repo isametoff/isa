@@ -1,5 +1,5 @@
 @extends('admin/layouts.main')
-
+@section('title', 'Добавление поста')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">

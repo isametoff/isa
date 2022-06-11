@@ -10,8 +10,11 @@ class StoreController extends BaseController
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $this->service->store($data);
-
+        if (auth()->user()->role == 0) {
+            $this->service->store($data);
+        }else{
+            abort(504);
+        }
         return redirect()->route('admin.post.index');
     }
 }

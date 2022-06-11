@@ -11,9 +11,12 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
+        if (auth()->user()->role == 0) {
+            StoreUserJob::dispatch($data);
+        }else{
+            abort(504);
+        }
 
-        StoreUserJob::dispatch($data);
-
-        return redirect()->route('/');
+        return redirect()->route('admin.user.index');
     }
 }

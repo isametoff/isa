@@ -12,7 +12,11 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, Category $category)
     {
         $data = $request->validated();
-        $category->update($data);
+        if (auth()->user()->role == 0) {
+            $category->update($data);
+        }else{
+            abort(504);
+        }
         return view('admin.category.show', compact('category'));
     }
 }

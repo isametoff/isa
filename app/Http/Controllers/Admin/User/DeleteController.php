@@ -11,8 +11,11 @@ class DeleteController extends Controller
 {
     public function __invoke(User $user)
     {
-    	
-        $user->delete();
+    	if (auth()->user()->role == 0) {
+            $user->delete();
+        }else{
+            abort(504);
+        }
         return redirect()->route('admin.user.index');
     }
 }

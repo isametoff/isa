@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-
+@section('title', 'Редактирование пользователя')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
@@ -53,9 +53,6 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            {{-- <div class="form-group w-50">
-                                <input type="hidden" name="user_id" value="{{ $user->id }}">
-                            </div> --}}
                             <input type="submit" class="btn btn-primary" value="Обновить">
                         </div>
                     </form>

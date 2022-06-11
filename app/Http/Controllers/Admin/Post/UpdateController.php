@@ -10,8 +10,11 @@ class UpdateController extends BaseController
     public function __invoke(UpdateRequest $request, Post $post)
     {
         $data = $request->validated();
-        $post = $this->service->update($data, $post);
-
+        if (auth()->user()->role == 0) {
+            $post = $this->service->update($data, $post);
+        }else{
+            abort(504);
+        }
         return view('admin.post.show', compact('post'));
     }
 }

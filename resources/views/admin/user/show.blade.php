@@ -1,5 +1,5 @@
 @extends('admin/layouts.main')
-
+@section('title', 'Пользователь {{ $user->name }}')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">

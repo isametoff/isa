@@ -9,7 +9,11 @@ class DeleteController extends BaseController
 {
     public function __invoke(Post $post)
     {
-        $post->delete();
+        if (auth()->user()->role == 0) {
+            $post->delete();
+        }else{
+            abort(504);
+        }
         return redirect()->route('admin.post.index');
     }
 }

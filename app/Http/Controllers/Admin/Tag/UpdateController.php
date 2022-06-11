@@ -11,7 +11,11 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, Tag $tag)
     {
         $data = $request->validated();
-        $tag->update($data);
+        if (auth()->user()->role == 0) {
+            $tag->update($data);
+        }else{
+            abort(504);
+        }
         return view('admin.tag.show', compact('tag'));
     }
 }
