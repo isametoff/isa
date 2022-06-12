@@ -1,5 +1,5 @@
 @extends('admin/layouts.main')
-
+@section('title', 'Тэги')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
@@ -10,8 +10,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="#">Тэги</a></li>
                         </ol>
                     </div>
                 </div>
@@ -42,15 +42,13 @@
                                         <tr>
                                             <td>{{ $tag->id }}</td>
                                             <td>{{ $tag->title }}</td>
-                                            <td class="text-center"><a
-                                                    href="{{ route('admin.tag.show', $tag->id) }}">
+                                            <td class="text-center"><a href="{{ route('admin.tag.show', $tag->id) }}">
                                                     <i class="far fa-eye"></i></a></td>
                                             <td class="text-center"><a
-                                                    href="{{ route('admin.tag.edit', $tag->id) }}"
-                                                    ><i class="fas fa-pen"></i></a></td>
+                                                    href="{{ route('admin.tag.edit', $tag->id) }}"><i
+                                                        class="fas fa-pen"></i></a></td>
                                             <td class="text-center">
-                                                <form action="{{ route('admin.tag.delete', $tag->id) }}"
-                                                    method="POST">
+                                                <form action="{{ route('admin.tag.delete', $tag->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="border-0">
@@ -66,7 +64,6 @@
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
 @endsection

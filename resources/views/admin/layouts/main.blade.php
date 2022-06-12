@@ -49,13 +49,20 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <input class="btn btn-outline-primary" type="submit" value="Выход">
-                    </form>
-                </li>
+                @if (auth()->user())
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <input class="btn btn-outline-primary" type="submit" value="Выход">
+                        </form>
+                    </li>
+                @else
+                    <li>
+                        <a class="btn btn-outline-primary" href="{{ url('register') }}" role="button">Регистрация</a>
+                        <a class="btn btn-outline-primary" href="{{ url('login') }}" role="button">Вход</a>
+                    </li>
+                @endif
             </ul>
         </nav>
         <!-- /.navbar -->

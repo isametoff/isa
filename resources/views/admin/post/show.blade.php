@@ -1,5 +1,5 @@
 @extends('admin/layouts.main')
-@section('title', 'Редактирование поста')
+@section('title', 'Просмотр поста')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
@@ -19,8 +19,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
+                            <li class="breadcrumb-item"><a href="#">{{ $post->title }}</a></li>
                         </ol>
                     </div>
                 </div>

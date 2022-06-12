@@ -4,7 +4,7 @@
             <a href="{{ route('admin.main.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
-                    Home
+                    Главная панель
                 </p>
             </a>
         </li>

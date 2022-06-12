@@ -10,8 +10,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
+                            <li class="breadcrumb-item"><a href="#">{{ $post->title }}</a></li>
                         </ol>
                     </div>
                 </div>
@@ -27,13 +28,13 @@
                             @method('PATCH')
                             <div class="form-group w-25">
                                 <input type="text" class="form-control" name="title" placeholder="Название поста"
-                                    value="{{$post->title }}">
+                                    value="{{ $post->title }}">
                                 @error('title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
-                                <textarea id="summernote" name="content">{{$post->content }}</textarea>
+                                <textarea id="summernote" name="content">{{ $post->content }}</textarea>
                                 @error('content')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
