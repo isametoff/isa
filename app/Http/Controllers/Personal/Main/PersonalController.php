@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Personal\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+use App\Models\PostUserLike;
 
 class PersonalController extends Controller
 {
     public function __invoke()
     {
-        return view('personal.main.index');
+        $data = [];
+        $data['commentCount'] = Comment::all()->count();
+        $data['likedCount'] = PostUserLike::all()->count();
+        return view('personal.main.index', compact('data'));
     }
 }

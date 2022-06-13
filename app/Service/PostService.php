@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use App\Models\Post;
-use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -63,3 +62,17 @@ class PostService
         return $post;
     }
 }
+// class CommentService
+// {
+//     public function update($data, $comment)
+//     {
+//         try {
+//             $comment->update($data);
+//             DB::commit();
+//         } catch (\Exception $exception) {
+//             Db::rollBack();
+//             abort(500);
+//         }
+//         return $comment;
+//     }
+// }

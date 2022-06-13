@@ -37,9 +37,13 @@ Route::name('personal.')->prefix('personal')->middleware('admin')->group(functio
     });
     Route::name('liked.')->prefix('liked')->group(function () {
         Route::get('/', LikedController::class)->name('index');
+        Route::delete('/{post}', App\Http\Controllers\Personal\Liked\DeleteController::class)->name('delete');
     });
     Route::name('comment.')->prefix('comment')->group(function () {
         Route::get('/', CommentController::class)->name('index');
+        Route::get('/{comment}/edit', App\Http\Controllers\Personal\Comment\EditController::class)->name('edit');
+        Route::patch('/{comment}', App\Http\Controllers\Personal\Comment\UpdateController::class)->name('update');
+        Route::delete('/{comment}', App\Http\Controllers\Personal\Comment\DeleteController::class)->name('delete');
     });
 });
 Route::name('admin.')->prefix('admin')->middleware('auth', 'verified', 'admin')->group(function () {

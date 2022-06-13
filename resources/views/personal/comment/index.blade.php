@@ -18,32 +18,36 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>{{ 9 }}</h3>
-                                <p>Понравившиеся посты</p>
-                            </div>
-                            <div class="icon">
-                                <i class="nav-icon far fa-heart"></i>
-                            </div>
-                            <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ 5 }}<sup style="font-size: 20px"></sup></h3>
-                                <p>Комментарии</p>
-                            </div>
-                            <div class="icon">
-                                <i class="nav-icon far fa-comment"></i>
-                            </div>
-                            <a href="{{ route('admin.post.index') }}" class="small-box-footer">Подробнее <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
+                <div class="card w-50">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th class="text-center colspan-3 ">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($comments as $comment)
+                                    <tr>
+                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $comment->message }}</td>
+                                        <td class="text-center"><a href="{{ route('personal.comment.edit', $comment->id) }}"><i
+                                                    class="fas fa-pen"></i></a></td>
+                                        <td class="text-center">
+                                            <form action="{{ route('personal.comment.delete', $comment->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="border-0">
+                                                    <i class="fas fa-trash text-danger" role="button"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

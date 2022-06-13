@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.user.index') }}" class="nav-link">
+                <a href="{{ route('personal.liked.index') }}" class="nav-link">
                     <i class="nav-icon far fa-heart"></i>
                     <p>
                         Понравившиеся посты
@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.post.index') }}" class="nav-link">
+                <a href="{{ route('personal.comment.index') }}" class="nav-link">
                     <i class="nav-icon far fa-comment"></i>
                     <p>
                         Комментарии
