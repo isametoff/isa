@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\Category\ShowController;
 use App\Http\Controllers\Admin\Category\EditController;
 use App\Http\Controllers\Admin\Category\UpdateController;
 use App\Http\Controllers\Admin\Category\DeleteController;
+use App\Http\Controllers\Personal\Comment\CommentController;
+use App\Http\Controllers\Personal\Liked\LikedController;
+use App\Http\Controllers\Personal\Main\PersonalController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -27,19 +30,31 @@ Route::name('main.')->group(function () {
     Route::get('/', IndexController::class);
 });
 
+Route::name('personal.')->prefix('personal')->middleware('admin')->group(function () {
+    Route::get('/', PersonalController::class)->name('index');
+    Route::name('main.')->prefix('main')->group(function () {
+        Route::get('/', PersonalController::class)->name('index');
+    });
+    Route::name('liked.')->prefix('liked')->group(function () {
+        Route::get('/', LikedController::class)->name('index');
+    });
+    Route::name('comment.')->prefix('comment')->group(function () {
+        Route::get('/', CommentController::class)->name('index');
+    });
+});
 Route::name('admin.')->prefix('admin')->middleware('auth', 'verified', 'admin')->group(function () {
     Route::get('/', AdminController::class)->name('index');
     Route::name('main.')->prefix('main')->group(function () {
-            Route::get('/', AdminController::class)->name('index');
+        Route::get('/', AdminController::class)->name('index');
     });
     Route::name('post.')->prefix('post')->middleware('verified', 'admin')->group(function () {
-            Route::get('/', App\Http\Controllers\Admin\Post\PostController::class)->name('index');
-            Route::get('/create', App\Http\Controllers\Admin\Post\CreateController::class)->name('create');
-            Route::post('/store', App\Http\Controllers\Admin\Post\StoreController::class)->name('store');
-            Route::get('/{post}', App\Http\Controllers\Admin\Post\ShowController::class)->name('show');
-            Route::get('/{post}/edit', App\Http\Controllers\Admin\Post\EditController::class)->name('edit');
-            Route::patch('/{post}', App\Http\Controllers\Admin\Post\UpdateController::class)->name('update');
-            Route::delete('/{post}', App\Http\Controllers\Admin\Post\DeleteController::class)->name('delete');
+        Route::get('/', App\Http\Controllers\Admin\Post\PostController::class)->name('index');
+        Route::get('/create', App\Http\Controllers\Admin\Post\CreateController::class)->name('create');
+        Route::post('/store', App\Http\Controllers\Admin\Post\StoreController::class)->name('store');
+        Route::get('/{post}', App\Http\Controllers\Admin\Post\ShowController::class)->name('show');
+        Route::get('/{post}/edit', App\Http\Controllers\Admin\Post\EditController::class)->name('edit');
+        Route::patch('/{post}', App\Http\Controllers\Admin\Post\UpdateController::class)->name('update');
+        Route::delete('/{post}', App\Http\Controllers\Admin\Post\DeleteController::class)->name('delete');
     });
     Route::name('category.')->prefix('category')->group(function () {
         Route::get('/', CategoryController::class)->name('index');

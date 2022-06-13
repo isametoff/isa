@@ -26,33 +26,17 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('admin.user.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
+                    <i class="nav-icon far fa-heart"></i>
                     <p>
-                        Пользователи
+                        Понравившиеся посты
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('admin.post.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-clipboard"></i>
+                    <i class="nav-icon far fa-comment"></i>
                     <p>
-                        Посты
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.category.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-chart-bar"></i>
-                    <p>
-                        Категории
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.tag.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-tags"></i>
-                    <p>
-                        Тэги
+                        Комментарии
                     </p>
                 </a>
             </li>

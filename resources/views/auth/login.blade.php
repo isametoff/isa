@@ -1,12 +1,12 @@
-@extends('admin/layouts.main')
+@extends('layouts.app')
 @section('title', 'Авторизация')
 @section('content')
-    <div class="content-wrapper">
-        <section class="content">
+    <div class="content-wrapper ">
+        <section class="content ">
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card mt-2 w-75">
+                    <div class="col-md-4">
+                        <div class="card mt-2">
                             <div class="card-header">{{ __('Авторизация') }}</div>
                             <div class="card-body">
                                 <form method="POST" action="{{ route('login') }}">
@@ -18,7 +18,6 @@
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                                 value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

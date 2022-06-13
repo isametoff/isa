@@ -1,4 +1,4 @@
-@extends('admin/layouts.main')
+@extends('layouts.app')
 @section('title', 'Подтверждение Email')
 @section('content')
     <div class="content-wrapper">

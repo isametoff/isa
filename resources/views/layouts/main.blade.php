@@ -60,15 +60,16 @@
                                     class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span> Eng</a>
                         </li>
                         <ul class="navbar-nav">
-                            @if (auth()->user())
+                            @auth
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.main.index') }}">Account</a>
                                 </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.main.index') }}">Вход</a>
-                                </li>
-                            @endif
+                            @endauth
+                            @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.main.index') }}">Вход</a>
+                            </li>
+                            @endguest
                         </ul>
                     </ul>
                 </div>

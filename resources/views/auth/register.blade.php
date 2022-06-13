@@ -1,11 +1,11 @@
-@extends('admin/layouts.main')
+@extends('layouts.app')
 @section('title', 'Регистрация')
 @section('content')
     <div class="content-wrapper">
         <section class="content">
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <div class="card mt-2 w-75">
                             <div class="card-header">{{ __('Регистрация') }}</div>
                             <div class="card-body">

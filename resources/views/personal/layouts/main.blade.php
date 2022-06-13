@@ -23,11 +23,6 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
-    <style>
-        .custom-file-label::after {
-            content: "...";
-        }
-    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
@@ -35,7 +30,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
+            <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="Admin" height="60"
                 width="60">
         </div>
 
@@ -48,25 +43,9 @@
                     </a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
-                @if (auth()->user())
-                    <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            @method('POST')
-                            <input class="btn btn-outline-primary" type="submit" value="Выход">
-                        </form>
-                    </li>
-                @else
-                    <li>
-                        <a class="btn btn-outline-primary" href="{{ url('register') }}" role="button">Регистрация</a>
-                        <a class="btn btn-outline-primary" href="{{ url('login') }}" role="button">Вход</a>
-                    </li>
-                @endif
-            </ul>
         </nav>
         <!-- /.navbar -->
-        @include('admin.includes.sidebar')
+        @include('personal.includes.sidebar')
         @yield('content')
 
         <footer class="main-footer">
