@@ -14,4 +14,9 @@ class Category extends Model
     protected $fillable = ['title'];
     protected $quardet = false;
 
+    public function posts()
+    {
+    	return $this->hasMany(Post::class, 'id', 'category_id');
+    }
+
 }

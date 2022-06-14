@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Блог')
+@section('title', 'Посты')
 @section('content')
     <main class="blog">
         <div class="container">
@@ -12,7 +12,7 @@
                                 <img src="{{ Storage::url($post->main_image) }}" alt="blog post">
                             </div>
                             <p class="blog-post-category">{{ $post->category->title }}</p>
-                            <a href="#!" class="blog-post-permalink">
+                            <a href="{{route('post.show', $post->id) }}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{ $post->title }}</h6>
                             </a>
                         </div>
@@ -26,11 +26,11 @@
                             @foreach ($randomPosts as $randomPost)
                                 <div class="col-md-6 blog-post aos-init aos-animate" data-aos="fade-up">
                                     <div class="blog-post-thumbnail-wrapper">
-                                        <img src="{{ Storage::url($post->preview_image) }}" alt="blog post">
+                                        <img src="{{ Storage::url($randomPost->preview_image) }}" alt="blog post">
                                     </div>
-                                    <p class="blog-post-category">{{ $post->category->title }}</p>
+                                    <p class="blog-post-category">{{ $randomPost->category->title }}</p>
                                     <a href="#!" class="blog-post-permalink">
-                                        <h6 class="blog-post-title">{{ $post->title }}</h6>
+                                        <h6 class="blog-post-title">{{ $randomPost->title }}</h6>
                                     </a>
                                 </div>
                             @endforeach

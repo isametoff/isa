@@ -83,7 +83,7 @@
                                 <select name="category_id" class="form-control">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
-                                            {{ $category->id == $post->category ? 'selected' : '' }}>
+                                            {{ $category->id == $post->category_id ? 'selected' : '' }}>
                                             {{ $category->title }} </option>
                                     @endforeach
                                 </select>

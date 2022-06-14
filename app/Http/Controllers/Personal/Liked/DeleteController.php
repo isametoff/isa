@@ -10,7 +10,7 @@ class DeleteController extends Controller
     public function __invoke(Post $post)
     {
         if (auth()->user()->role == 0) {
-            auth()->user()->likedPosts()->detach($post->id);
+            dd(auth()->user()->likedPosts()->detach($post->id));
         }else{
             abort(504);
         }

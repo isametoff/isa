@@ -12,7 +12,8 @@ class PersonalController extends Controller
     {
         $data = [];
         $data['commentCount'] = Comment::all()->count();
-        $data['likedCount'] = PostUserLike::all()->count();
+        // $posts = auth()->user()->likedPosts;
+        $data['likedCount'] = auth()->user()->likedPosts->count();
         return view('personal.main.index', compact('data'));
     }
 }
