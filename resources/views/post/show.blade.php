@@ -24,45 +24,59 @@
                         <h2 class="section-title mb-4" data-aos="fade-up">Схожие посты</h2>
                         <div class="row">
                             @foreach ($relatedPosts as $relatedPost)
-                            <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                <img src="{{ Storage::url($relatedPost->main_image) }}" alt="related post" class="post-thumbnail">
-                                <p class="post-category">Blog post</p>
-                                <h5 class="post-title">Front becomes an official Instagram</h5>
-                            </div>
+                                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                    <img src="{{ Storage::url($relatedPost->main_image) }}" alt="related post"
+                                        class="post-thumbnail">
+                                    <p class="post-category">{{ $relatedPost->category->title }}</p>
+                                    <a href="{{ route('post.show', $relatedPost->id) }}">
+                                        <h5 class="post-title">{{ $relatedPost->title }}</h5>
+                                    </a>
+                                </div>
                             @endforeach
                         </div>
                     </section>
                     <section class="comment-section">
                         <h2 class="section-title mb-5" data-aos="fade-up">Оставить комментарий</h2>
-                        <form action="/" method="post">
-                            <div class="row">
-                                <div class="form-group col-12" data-aos="fade-up">
-                                    <label for="comment" class="sr-only">Comment</label>
-                                    <textarea name="comment" id="comment" class="form-control" placeholder="Comment" rows="10">Comment</textarea>
+                        <div class="col-md-12" data-aos="fade-up">
+                            <div class="card card-widget " data-aos="fade-up">
+                                @foreach ($post->comments as $comment)
+                                    <div class="card-footer card-comments" data-aos="fade-up">
+                                        <div class="card-comment ">
+                                            <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg"
+                                                alt="User Image">
+                                            <div class="comment-text " data-aos=" fade-up">
+                                                <span class="username">{{ $comment->user->name }}</span>
+                                                <span
+                                                    class="text-muted float-right">{{ $comment->DateAsCarbon->diffForHumans() }}</span>
+                                                </span>
+                                                {{ $comment->message }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <div class="card-footer">
+                                    @auth
+                                        <form action="{{ route('post.comment.store', $post->id) }}" method="post">
+                                            @csrf
+                                            <img class="img-fluid img-circle img-sm" src="../dist/img/user4-128x128.jpg"
+                                                alt="Alt Text">
+                                            <div class="img-push " data-aos="fade-up">
+                                                <textarea type="text" name="message" id="comment" class="form-control" placeholder="Напишите комментарий" rows="10"></textarea>
+                                            </div>
+                                            <input type="submit" value="Добавить" data-aos="fade-up"
+                                                class=" btn float-right mt-3 btn-primary">
+                                        </form>
+                                    @endauth
+                                    @guest
+                                        <div class="d-flex align-items-center"><a class="nav-link"
+                                                href="{{ route('login') }}">{{ __('Войдите') }}</a>{{ __('или') }}
+                                            <a class="nav-link"
+                                                href="{{ route('register') }}">{{ __('зарегистрируйтесь') }}</a>{{ __('чтобы оставить комментарий.') }}
+                                        </div>
+                                    @endguest
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-4" data-aos="fade-right">
-                                    <label for="name" class="sr-only">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name*">
-                                </div>
-                                <div class="form-group col-md-4" data-aos="fade-up">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email*"
-                                        required>
-                                </div>
-                                <div class="form-group col-md-4" data-aos="fade-left">
-                                    <label for="website" class="sr-only">Website</label>
-                                    <input type="url" name="website" id="website" class="form-control"
-                                        placeholder="Website*">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12" data-aos="fade-up">
-                                    <input type="submit" value="Send Message" class="btn btn-warning">
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </section>
                 </div>
             </div>

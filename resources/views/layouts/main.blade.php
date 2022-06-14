@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <script src="{{ asset('assets/vendors/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/loader.js') }}"></script>
 </head>
@@ -19,7 +22,7 @@
     <header class="edica-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="{{'/'}}"><img src="{{ asset('assets/images/logo.svg') }}"
+                <a class="navbar-brand" href="{{ '/' }}"><img src="{{ asset('assets/images/logo.svg') }}"
                         alt="Edica"></a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav"
                     aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="edicaMainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{'/'}}">Home <span
+                            <a class="nav-link" href="{{ route('main.index') }}">Home <span
                                     class="sr-only">(current)</span></a>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown"

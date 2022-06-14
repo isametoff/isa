@@ -10,6 +10,7 @@ class ShowController extends Controller
 {
     public function __invoke(Post $post)
     {
+        $posts = Post::all()->random(4);
         $date = Carbon::parse($post->created_at);
         $relatedPosts = Post::where('category_id', $post->category_id)
             ->where('id', '!=', $post->id)
@@ -17,6 +18,6 @@ class ShowController extends Controller
             ->random(3, $post->id);
             // ->take(3);
             //dd($relatedPosts);
-        return view('post.show', compact('post', 'date', 'relatedPosts'));
+        return view('post.show', compact('post', 'posts', 'date', 'relatedPosts'));
     }
 }

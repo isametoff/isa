@@ -25,13 +25,16 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', App\Http\Controllers\Main\IndexController::class)->prefix('main')->name('index');
+Route::get('/', App\Http\Controllers\Main\IndexController::class)->prefix('main')->name('main.index');
 Route::name('main.')->group(function () {
     Route::get('/', App\Http\Controllers\Main\IndexController::class)->prefix('main')->name('index');
 });
 Route::name('post.')->prefix('post')->group(function () {
     Route::get('/', App\Http\Controllers\Post\IndexController::class)->name('index');
     Route::get('/{post}', App\Http\Controllers\Post\ShowController::class)->name('show');
+    Route::name('comment.')->prefix('{post}/comments')->group(function () {
+        Route::post('/', App\Http\Controllers\Post\Comment\StoreController::class)->name('store');
+    });
 });
 
 Route::name('personal.')->prefix('personal')->middleware('admin')->group(function () {
