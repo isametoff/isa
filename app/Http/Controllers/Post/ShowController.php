@@ -12,12 +12,11 @@ class ShowController extends Controller
     {
         $posts = Post::all()->random(4);
         $date = Carbon::parse($post->created_at);
+        $update = Carbon::parse($post->updated_at);
         $relatedPosts = Post::where('category_id', $post->category_id)
             ->where('id', '!=', $post->id)
             ->get()
             ->random(3, $post->id);
-            // ->take(3);
-            //dd($relatedPosts);
-        return view('post.show', compact('post', 'posts', 'date', 'relatedPosts'));
+        return view('post.show', compact('post', 'posts', 'date', 'relatedPosts', 'update'));
     }
 }
