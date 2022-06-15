@@ -15,6 +15,6 @@ class UpdateController extends BaseController
         }else{
             abort(504);
         }
-        return view('admin.post.show', compact('post'));
+        return redirect()->route('post.show', compact('post'));
     }
 }

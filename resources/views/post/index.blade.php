@@ -3,7 +3,7 @@
 @section('content')
     <main class="blog">
         <div class="container">
-            <h1 class="edica-page-title" data-aos="fade-up">Блог</h1>
+            <h3 class="edica-page-title" data-aos="fade-up">Блог</h3>
             <section class="featured-posts-section">
                 <div class="row">
                     @foreach ($posts as $post)
@@ -12,13 +12,35 @@
                                 <img src="{{ Storage::url($post->main_image) }}" alt="blog post">
                             </div>
                             <p class="blog-post-category">{{ $post->category->title }}</p>
-                            <a href="{{route('post.show', $post->id) }}" class="blog-post-permalink">
+                            @auth
+                                <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-default btn-sm float-right"><i
+                                            @if (auth()->user()->likedPosts->contains($post->id)) class="fas fa-thumbs-up"></i>
+                                    <span class="float-left mr-3">{{ $post->liked_users_count }}</span>
+                                    @else
+                                    class="far fa-thumbs-up"></i> @endif
+                                            </button>
+                                </form>
+                            @endauth
+                            @guest
+                                <button type="submit" class="btn btn-default btn-sm float-right">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <span class="float-left mr-3">{{ $post->liked_users_count }}</span>
+                                </button>
+                            @endguest
+                            <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{ $post->title }}</h6>
                             </a>
                         </div>
                     @endforeach
                 </div>
             </section>
+            <div class="row">
+                <div class="m-auto">
+                    {{ $posts->links() }}
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-8">
                     <section>
@@ -29,7 +51,24 @@
                                         <img src="{{ Storage::url($randomPost->preview_image) }}" alt="blog post">
                                     </div>
                                     <p class="blog-post-category">{{ $randomPost->category->title }}</p>
-                                    <a href="#!" class="blog-post-permalink">
+                                    @auth
+                                        <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-default btn-sm float-right"><i
+                                                    @if (auth()->user()->likedPosts->contains($post->id)) class="fas fa-thumbs-up"></i>
+                                    <span class="float-left mr-3">{{ $post->liked_users_count }}</span>
+                                    @else
+                                    class="far fa-thumbs-up"></i> @endif
+                                                    </button>
+                                        </form>
+                                    @endauth
+                                    @guest
+                                        <button type="submit" class="btn btn-default btn-sm float-right">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <span class="float-left mr-3">{{ $post->liked_users_count }}</span>
+                                        </button>
+                                    @endguest
+                                    <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                                         <h6 class="blog-post-title">{{ $randomPost->title }}</h6>
                                     </a>
                                 </div>
@@ -43,7 +82,7 @@
                         <ul class="post-list">
                             @foreach ($likedPosts as $post)
                                 <li class="post">
-                                    <a href="#!" class="post-permalink media">
+                                    <a href="{{ route('post.show', $post->id) }}" class="post-permalink media">
                                         <img src="{{ Storage::url($post->preview_image) }}" alt="blog post">
                                         <div class="media-body">
                                             <h6 class="post-title">{{ $post->title }}
@@ -55,11 +94,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="m-auto">
-                {{ $posts->links() }}
             </div>
         </div>
     </main>

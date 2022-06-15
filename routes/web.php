@@ -29,11 +29,20 @@ Route::get('/', App\Http\Controllers\Main\IndexController::class)->prefix('main'
 Route::name('main.')->group(function () {
     Route::get('/', App\Http\Controllers\Main\IndexController::class)->prefix('main')->name('index');
 });
+Route::name('category.')->prefix('category')->group(function () {
+    Route::get('/', App\Http\Controllers\Category\IndexController::class)->name('index');
+    Route::name('post.')->prefix('{category}/posts')->group(function () {
+        Route::get('/', App\Http\Controllers\Category\Post\IndexController::class)->name('index');
+    });
+});
 Route::name('post.')->prefix('post')->group(function () {
     Route::get('/', App\Http\Controllers\Post\IndexController::class)->name('index');
     Route::get('/{post}', App\Http\Controllers\Post\ShowController::class)->name('show');
     Route::name('comment.')->prefix('{post}/comments')->group(function () {
         Route::post('/', App\Http\Controllers\Post\Comment\StoreController::class)->name('store');
+    });
+    Route::name('like.')->prefix('{post}/likes')->group(function () {
+        Route::post('/', App\Http\Controllers\Post\Like\StoreController::class)->name('store');
     });
 });
 

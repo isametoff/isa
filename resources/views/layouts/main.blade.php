@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css') }}">
@@ -22,8 +24,8 @@
     <header class="edica-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="{{ '/' }}"><img src="{{ asset('assets/images/logo.svg') }}"
-                        alt="Edica"></a>
+                <a class="navbar-brand" href="{{ route('main.index') }}"><img
+                        src="{{ asset('assets/images/logo.svg') }}" alt="Edica"></a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav"
                     aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,18 +33,14 @@
                 <div class="collapse navbar-collapse" id="edicaMainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('main.index') }}">Home <span
+                            <a class="nav-link" href="#">Главная <span
                                     class="sr-only">(current)</span></a>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Blog</a>
-                            <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                                <a class="dropdown-item" href="blog.html">Blog Archive</a>
-                                <a class="dropdown-item" href="blog-single.html">Blog Post</a>
-                            </div>
+                            <a class="nav-link" href="{{ route('main.index') }}">
+                                Блог</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav mt-2 mt-lg-0">
@@ -53,7 +51,7 @@
                         <ul class="navbar-nav">
                             @auth
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.main.index') }}">Account</a>
+                                    <a class="nav-link" href="{{ route('admin.main.index') }}">Кабинет</a>
                                 </li>
                             @endauth
                             @guest
