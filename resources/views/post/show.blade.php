@@ -13,6 +13,11 @@
                                 <span class="description">Опубликованно - {{ $date->diffForHumans() }} в
                                     {{ $date->format('H:i') }}
                                 </span>
+                                @if ($update != $date)
+                                <span class="description">Изменено - {{ $update->diffForHumans() }} в
+                                    {{ $update->format('H:i') }}
+                                </span>
+                                @endif
                             </div>
                         </div>
                         <div class="card-body ">
@@ -110,7 +115,7 @@
                                                             {{ $relatedPost->title }}</h5>
                                                         <a href="{{ $relatedPost->id }}" class="text-white">Последнее
                                                             обновление
-                                                            {{ $relatedPost->created_at->diffForHumans() }}
+                                                            {{ $update->diffForHumans() }}
                                                             назад</a>
                                                     </div>
                                                 </div>

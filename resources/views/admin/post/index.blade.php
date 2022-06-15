@@ -41,7 +41,8 @@
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
-                                        <td class="text-center"><a href="{{ route('post.show', $post->id) }}">
+                                        <td class="text-center"><a href="{{ route('post.show', $post->id) }}" onclick="window.open(this.href);
+                                            return false">
                                                 <i class="far fa-eye"></i></a></td>
                                         <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}"><i
                                                     class="fas fa-pen"></i></a></td>

@@ -8,7 +8,7 @@ class PostController extends BaseController
 {
     public function __invoke()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','desc')->get();
         return view('admin.post.index', compact('posts'));
     }
 }
